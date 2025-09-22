@@ -1,0 +1,20 @@
+{
+	"name": "vitest-bug-repro",
+	"type": "module",
+	"private": false,
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy --minify",
+		"coverage": "vitest --coverage",
+		"cf-typegen": "wrangler types --env-interface CloudflareBindings"
+	},
+	"dependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.9.3",
+		"hono": "^4.9.8"
+	},
+	"devDependencies": {
+		"@vitest/coverage-istanbul": "^3.2.4",
+		"vitest": "^3.2.4",
+		"wrangler": "^4.38.0"
+	}
+}
