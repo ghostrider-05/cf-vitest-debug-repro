@@ -9,12 +9,12 @@
 		"cf-typegen": "wrangler types --env-interface CloudflareBindings"
 	},
 	"dependencies": {
-		"@cloudflare/vitest-pool-workers": "^0.12.6",
-		"hono": "^4.11.5"
+		"@cloudflare/vitest-pool-workers": "^0.16.10",
+		"hono": "^4.12.23"
 	},
 	"devDependencies": {
-		"@vitest/coverage-istanbul": "^3.2.4",
-		"vitest": "^3.2.4",
-		"wrangler": "^4.60.0"
+		"@vitest/coverage-istanbul": "^4.1.7",
+		"vitest": "^4.1.7",
+		"wrangler": "^4.95.0"
 	}
 }

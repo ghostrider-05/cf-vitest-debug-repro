@@ -1,11 +1,15 @@
-import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
 
-export default defineWorkersConfig({
+export default defineConfig({
+    // Some test configuration
     test: {
         exclude: [
             'node_modules/**',
             '.wrangler/**',
         ],
+        watch: false,
+        setupFiles: ['./tests/setup.ts'],
         coverage: {
             provider: 'istanbul',
             reportOnFailure: true,
@@ -15,23 +19,20 @@ export default defineWorkersConfig({
                 'text',
             ],
         },
-        poolOptions: {
-            workers: {
-                // remoteBindings: false,
-                wrangler: {
-                    configPath: "./wrangler.jsonc",
-                },
-                miniflare: {
-                    compatibilityFlags: [
-                        'nodejs_compat',
-                    ],
-                    d1Databases: {
-                        'TEST_PROJECT_BINDING': {
-                            id: 'some_id',
-                        },
+    },
+    plugins: [
+        cloudflareTest({
+            wrangler: { configPath: "./wrangler.jsonc" },
+            miniflare: {
+                compatibilityFlags: [
+                    'nodejs_compat',
+                ],
+                d1Databases: {
+                    'TEST_PROJECT_BINDING': {
+                        id: 'some_id',
                     },
                 },
             },
-        },
-    },
+        }),
+    ],
 })
