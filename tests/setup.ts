@@ -1,12 +1,6 @@
-import { MockAgent } from "cloudflare:test";
-import { beforeEach } from "vitest";
+import { MockAgent, reset } from "cloudflare:test";
+import { afterEach } from "vitest";
 
-const fetchMock = new class extends MockAgent {
-    public constructor () {
-        super()
-    }
-}
-
-beforeEach(() => {
-    fetchMock.activate()
+afterEach(async () => {
+    await reset()
 })

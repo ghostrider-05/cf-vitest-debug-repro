@@ -13,7 +13,17 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	"ratelimits": [
+		{
+			"name": "LIMITER",
+			"namespace_id": "101",
+			"simple": {
+				"period": 60,
+				"limit": 10
+			}
+		}
+	]
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
